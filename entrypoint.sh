@@ -15,6 +15,10 @@ create_cache_dir() {
 create_log_dir
 create_cache_dir
 
+# send access_log to stdout
+chmod o+w /dev/stdout
+ln -sf /dev/stdout /var/log/squid/access.log
+
 # allow arguments to be passed to squid
 if [[ ${1:0:1} = '-' ]]; then
   EXTRA_ARGS="$@"
